@@ -1,26 +1,26 @@
 local Instructions = [=[
-Prototype (ID: 8040928) - 0 Parameter(s), 0 Upvalues, ...
+Prototype (ID: 42196448) - 0 Parameter(s), 0 Upvalues, ...
 
-> #Prototype.Constants: 4
-> #Prototype.Instructions: 9
+> #Prototype.Constants: 3
+> #Prototype.Instructions: 5
 > #Prototype.Prototypes: 0
 
-> [Constants->0] (Number) 3
-> [Constants->1] (Number) 2
-> [Constants->2] (Number) 1
-> [Constants->3] (String) "print"
+> [Constants->0] (String) "print"
+> [Constants->1] (String) "Hello World"
+> [Constants->2] (Number) 20
 
-> [Instructions->0, 03, 0062810472] NEWTABLE: { 0 , 3 , 0 } / R[0] = {}
-> [Instructions->1, 03, 0032293683]    LOADK: { 1 , 1 , 0 } / R[1] = 3
-> [Instructions->2, 03, 0000092630]    LOADK: { 2 , 2 , 0 } / R[2] = 2
-> [Instructions->3, 03, 0012319829]    LOADK: { 3 , 3 , 0 } / R[3] = 1
-> [Instructions->4, 03, 0027924587]  SETLIST: { 0 , 3 , 1 } / R[0][0 + i] = R[0 + i] (1 <= i <= 3)
-> [Instructions->5, 06, 0022982619]     MOVE: { 1 , 4 , 0 } / R[1] = R[4]
-> [Instructions->6, 04, 0036789525]     MOVE: { 2 , 0 , 0 } / R[2] = R[0]
-> [Instructions->7, 09, 0061168747]     CALL: { 1 , 2 , 1 } / R[1](R[2])
-> [Instructions->8, 10, 0015270931]   RETURN: { 0 , 1 , 0 } / return 
+> [Instructions->0, 4, 0057996302] GETGLOBAL: { 0 , 1 , 0 } / R[0] = Environment["print"]
+> [Instructions->1, 4, 0032068921]     LOADK: { 1 , 2 , 0 } / R[1] = "Hello World"
+> [Instructions->2, 4, 0025062150]     LOADK: { 2 , 3 , 0 } / R[2] = 20
+> [Instructions->3, 4, 0030796376]      CALL: { 0 , 2 , 1 } / R[0](R[1])
+> [Instructions->4, 4, 0008640339]    RETURN: { 0 , 1 , 0 } / return 
 ]=];
 
+function LdToDec(full)
+    return string.gsub(full, "R%[(%d+)]", function(Digit)
+        return string.format("v%s", string.match(Digit, "%d+"))
+    end)
+end
 function string_split(inputstr, sep)
         if sep == nil then
                 sep = "%s"
@@ -58,21 +58,28 @@ StripInformation = function(Line)
     return;
 end
 
+local LoadedVars = {}
 local script = string.format("local R = {};\n(function()")
 for Index, Line in pairs(string_split(Instructions, "\n")) do
     local Info         = StripInformation(Line);
     case(Info.Instruction, {
         LOADK = function()
             script = string.format("%s\n\t%s", script, string.format("%s;", Info.InstrInfo))
+            LoadedVars[Info.VariableNames[1]] = string.match(Info.InstrInfo, " = (.+)")
         end,
         GETGLOBAL = function()
             script = string.format("%s\n\t%s", script, string.gsub(string.format("%s;", Info.InstrInfo), "Environment", "_G"))
+            LoadedVars[Info.VariableNames[1]] = string.match(string.gsub(Info.InstrInfo, "Environment", "_G"), " = (.+)")
         end,
         RETURN = function()
             script = string.format("%s\n\t%s", script, "return;")
         end,
         CALL = function()
-            script = string.format("%s\n\t%s", script, string.gsub(Info.InstrInfo, " to STACK_TOP", ""))
+            local org_call = string.gsub(Info.InstrInfo, " to STACK_TOP", "")
+            org_call = string.gsub(org_call, "R%[%d]", function(Digit)
+                return LoadedVars[Digit] or Digit
+            end)
+            script = string.format("%s\n\t%s", script, org_call)
         end,
         NEWTABLE = function()
             script = string.format("%s\n\t%s", script, string.format("%s = {};", Info.VariableNames[1])) 
@@ -119,5 +126,5 @@ for Index, Line in pairs(string_split(Instructions, "\n")) do
     end)
 end
 script = string.format("%s\nend)()", script)
-
+script = LdToDec(script)
 print(script)
