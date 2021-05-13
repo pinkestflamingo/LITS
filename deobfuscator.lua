@@ -1,347 +1,473 @@
-local a =
+local a = false
+local b =
     [=[
-Prototype (ID: 56157654) - 0 Parameter(s), 0 Upvalues, ...
-> #Prototype.Constants: 2
-> #Prototype.Instructions: 8
-> #Prototype.Prototypes: 1
-> [Constants->0] (String) "Function1"
-> [Constants->1] (String) "print"
-> [Instructions->0, 13, 0029508328]   CLOSURE: { 0 , 0 , 0 } / R[0] = Prototypes[0] (8694358), 0 upvalue(s)
-> [Instructions->1, 18, 0040271759] SETGLOBAL: { 0 , 1 , 0 } / Environment["Function1"] = R[0]
-> [Instructions->2, 18, 0057892925] GETGLOBAL: { 0 , 2 , 0 } / R[0] = Environment["print"]
-> [Instructions->3, 18, 0021789888] GETGLOBAL: { 1 , 1 , 0 } / R[1] = Environment["Function1"]
-> [Instructions->4, 18, 0001718287]  LOADBOOL: { 2 , 1 , 0 } / R[2] = true
-> [Instructions->5, 18, 0048300107]      CALL: { 1 , 2 , 0 } / R[1] to STACK_TOP = R[1](R[2])
-> [Instructions->6, 18, 0065912899]      CALL: { 0 , 0 , 1 } / R[0](R[1] to STACK_TOP)
-> [Instructions->7, 18, 0024341804]    RETURN: { 0 , 1 , 0 } / return 
-Prototype (ID: 8694358) - 1 Parameter(s), 0 Upvalues
-> #Prototype.Constants: 3
-> #Prototype.Instructions: 8
+Prototype (ID: 44541002) - 0 Parameter(s), 0 Upvalues, ...
+
+> #Prototype.Constants: 4
+> #Prototype.Instructions: 11
+> #Prototype.Prototypes: 3
+
+> [Constants->0] (String) "function1"
+> [Constants->1] (String) "function2"
+> [Constants->2] (String) "function3"
+> [Constants->3] (String) "print"
+
+> [Instructions->00, 01, 0032020268]   CLOSURE: { 0 , 0 , 0 } / R[0] = Prototypes[0] (30442998), 0 upvalue(s)
+> [Instructions->01, 08, 0019701578] SETGLOBAL: { 0 , 1 , 0 } / Environment["function1"] = R[0]
+> [Instructions->02, 01, 0064627341]   CLOSURE: { 0 , 1 , 0 } / R[0] = Prototypes[1] (30532579), 0 upvalue(s)
+> [Instructions->03, 08, 0035557423] SETGLOBAL: { 0 , 2 , 0 } / Environment["function2"] = R[0]
+> [Instructions->04, 01, 0052539671]   CLOSURE: { 0 , 2 , 0 } / R[0] = Prototypes[2] (38498557), 0 upvalue(s)
+> [Instructions->05, 17, 0036249349] SETGLOBAL: { 0 , 3 , 0 } / Environment["function3"] = R[0]
+> [Instructions->06, 17, 0040792853] GETGLOBAL: { 0 , 4 , 0 } / R[0] = Environment["print"]
+> [Instructions->07, 17, 0039686607] GETGLOBAL: { 1 , 3 , 0 } / R[1] = Environment["function3"]
+> [Instructions->08, 17, 0045207704]      CALL: { 1 , 1 , 0 } / R[1] to STACK_TOP = R[1]()
+> [Instructions->09, 17, 0015808916]      CALL: { 0 , 0 , 1 } / R[0](R[1] to STACK_TOP)
+> [Instructions->10, 17, 0046714790]    RETURN: { 0 , 1 , 0 } / return 
+
+Prototype (ID: 30442998) - 0 Parameter(s), 0 Upvalues
+
+> #Prototype.Constants: 1
+> #Prototype.Instructions: 3
 > #Prototype.Prototypes: 0
-> [Constants->0] (Boolean) true
-> [Constants->1] (String) "True"
-> [Constants->2] (String) "False"
-> [Instructions->0, 00, 0057506495]     EQ: { 0 , 5 , 1 } / goto PC 2 (37886738) if R[0] == true
-> [Instructions->1, 20, 0043978329]    JMP: { 0 , 5 , 0 } / goto PC 6 (62364123)
-> [Instructions->2, 11, 0037886738]  LOADK: { 1 , 2 , 0 } / R[1] = "True"
-> [Instructions->3, 10, 0055800918] RETURN: { 1 , 2 , 0 } / return R[1]
-> [Instructions->4, 20, 0064995604]    JMP: { 0 , 7 , 0 } / goto PC 8 (29327853)
-> [Instructions->5, 11, 0062364123]  LOADK: { 1 , 3 , 0 } / R[1] = "False"
-> [Instructions->6, 10, 0025062268] RETURN: { 1 , 2 , 0 } / return R[1]
-> [Instructions->7, 02, 0029327853] RETURN: { 0 , 1 , 0 } / return 
+
+> [Constants->0] (String) "Hello World"
+
+> [Instructions->0, 14, 0014127732]  LOADK: { 0 , 1 , 0 } / R[0] = "Hello World"
+> [Instructions->1, 09, 0017580640] RETURN: { 0 , 2 , 0 } / return R[0]
+> [Instructions->2, 19, 0024765583] RETURN: { 0 , 1 , 0 } / return 
+
+Prototype (ID: 30532579) - 0 Parameter(s), 0 Upvalues
+
+> #Prototype.Constants: 1
+> #Prototype.Instructions: 4
+> #Prototype.Prototypes: 0
+
+> [Constants->0] (String) "function1"
+
+> [Instructions->0, 11, 0021432036] GETGLOBAL: { 0 , 1 , 0 } / R[0] = Environment["function1"]
+> [Instructions->1, 02, 0035374084]  TAILCALL: { 0 , 1 , 0 } / return R[0]()
+> [Instructions->2, 16, 0020088659]    RETURN: { 0 , 0 , 0 } / return R[0] to STACK_TOP
+> [Instructions->3, 19, 0066031861]    RETURN: { 0 , 1 , 0 } / return 
+
+Prototype (ID: 38498557) - 0 Parameter(s), 0 Upvalues
+
+> #Prototype.Constants: 1
+> #Prototype.Instructions: 4
+> #Prototype.Prototypes: 0
+
+> [Constants->0] (String) "fuction2"
+
+> [Instructions->0, 11, 0010697166] GETGLOBAL: { 0 , 1 , 0 } / R[0] = Environment["function2"]
+> [Instructions->1, 02, 0014350209]  TAILCALL: { 0 , 1 , 0 } / return R[0]()
+> [Instructions->2, 16, 0056959091]    RETURN: { 0 , 0 , 0 } / return R[0] to STACK_TOP
+> [Instructions->3, 19, 0015429576]    RETURN: { 0 , 1 , 0 } / return 
 ]=]
-function LdToDec(b)
+function LdToDec(c)
     return string.gsub(
-        b,
+        c,
         "R%[(%d+)]",
-        function(c)
-            return string.format("v%s", string.match(c, "%d+"))
+        function(d)
+            return string.format("v%s", string.match(d, "%d+"))
         end
     )
 end
-function string_split(d, e)
-    if e == nil then
-        e = "%s"
+function string_split(e, f)
+    if f == nil then
+        f = "%s"
     end
-    local f = {}
-    for g in string.gmatch(d, "([^" .. e .. "]+)") do
-        table.insert(f, g)
+    local g = {}
+    for h in string.gmatch(e, "([^" .. f .. "]+)") do
+        table.insert(g, h)
     end
-    return f
+    return g
 end
-function case(h, table, i)
-    if rawget(table, h) then
-        return rawget(table, h)()
+function case(i, table, j)
+    if rawget(table, i) then
+        return rawget(table, i)()
     end
-    return i()
+    return j()
 end
-function MatchToArray(j)
-    local k = {}
-    for l in j do
-        table.insert(k, l)
+function MatchToArray(k)
+    local l = {}
+    for m in k do
+        table.insert(l, m)
     end
-    return k
+    return l
 end
-StripInformation = function(m)
-    local n = string.gsub(string.match(m, "](.+): {") or "", " ", "")
-    if n ~= nil then
+StripInformation = function(n)
+    local o = string.gsub(string.match(n, "](.+): {") or "", " ", "")
+    if o ~= nil then
         return {
-            Instruction = n,
-            VariableNames = MatchToArray(string.gmatch(m, "R%[%d+]")),
-            MemoryAt = string.sub(tostring(string.match(m, ", %d+]")), 3, -2),
-            InstrInfo = string.match(m, " / (.+)")
+            Instruction = o,
+            VariableNames = MatchToArray(string.gmatch(n, "R%[%d+]")),
+            MemoryAt = string.sub(tostring(string.match(n, ", %d+]")), 3, -2),
+            InstrInfo = string.match(n, " / (.+)")
         }
     end
     return
 end
-local o = {}
-GenerateParameters = function(p)
-    local q = ""
-    for r = 1, p do
-        q = string.format("%sR[%d], ", q, r - 1)
+local p = {}
+local q = {}
+GenerateParameters = function(r)
+    local s = ""
+    for t = 1, r do
+        s = string.format("%sR[%d], ", s, t - 1)
     end
-    return string.sub(q, 1, -3)
+    return string.sub(s, 1, -3)
 end
-Prototype2Script = function(s, t)
-    local u = {}
-    local v = {}
+Prototype2Script = function(u, v)
     local w = {}
-    local x = ""
-    for y, m in pairs(string_split(a, "\n")) do
-        if y > s and y < s + t + 1 then
-            local z = StripInformation(m)
-            local A = 0
-            for r, B in pairs(w) do
-                A = A + 1
-                if "00" .. r == z.MemoryAt then
-                    print("else ->", z.MemoryAt)
-                    x = string.format("%s\n%s", x, "else")
-                    table.remove(w, r)
+    local x = {}
+    local y = {}
+    local z = ""
+    local A = false
+    for B, n in pairs(string_split(b, "\n")) do
+        if B > u and B < u + v + 1 and not A then
+            local C = StripInformation(n)
+            local D = 0
+            for t, E in pairs(y) do
+                D = D + 1
+                if "00" .. t == C.MemoryAt then
+                    print("else ->", C.MemoryAt)
+                    z = string.format("%s\n%s", z, "else")
+                    table.remove(y, t)
                 end
             end
             case(
-                z.Instruction,
+                C.Instruction,
                 {
                     LOADK = function()
-                        x = string.format("%s\n%s", x, string.format("%s;", z.InstrInfo))
-                        v[z.VariableNames[1]] = string.match(z.InstrInfo, " = (.+)")
+                        if x[C.VariableNames[1]] == nil then
+                            z = string.format("%s\n%s", z, string.format("local %s;", C.InstrInfo))
+                            x[C.VariableNames[1]] = string.match(C.InstrInfo, " = (.+)")
+                        else
+                            z = string.format("%s\n%s", z, string.format("%s;", C.InstrInfo))
+                            x[C.VariableNames[1]] = string.match(C.InstrInfo, " = (.+)")
+                        end
                     end,
                     GETGLOBAL = function()
-                        x =
-                            string.format(
-                            "%s\n%s",
-                            x,
-                            string.gsub(string.format("%s;", z.InstrInfo), "Environment", "_G")
-                        )
+                        local F = string.sub(string.match(string.sub(C.InstrInfo, 21, 9e9), "(.+)]"), 1, -2)
+                        if x[C.VariableNames[1]] == nil then
+                            z =
+                                string.format(
+                                "%s\n%s",
+                                z,
+                                string.gsub(string.format("local %s;", C.InstrInfo), "Environment", "_G")
+                            )
+                            x[C.VariableNames[1]] = string.match(C.InstrInfo, " = (.+)")
+                        else
+                            z =
+                                string.format(
+                                "%s\n%s",
+                                z,
+                                string.gsub(string.format("%s;", C.InstrInfo), "Environment", "_G")
+                            )
+                            x[C.VariableNames[1]] = string.match(C.InstrInfo, " = (.+)")
+                        end
                     end,
                     LOADBOOL = function()
-                        x = string.format("%s\n%s", x, string.format("%s;", z.InstrInfo))
+                        if x[C.VariableNames[1]] == nil then
+                            z = string.format("%s\n%s", z, string.format("local %s;", C.InstrInfo))
+                            x[C.VariableNames[1]] = string.match(C.InstrInfo, " = (.+)")
+                        else
+                            z = string.format("%s\n%s", z, string.format("%s;", C.InstrInfo))
+                            x[C.VariableNames[1]] = string.match(C.InstrInfo, " = (.+)")
+                        end
                     end,
                     CLOSURE = function()
-                        local C = tonumber(string.match(z.InstrInfo, "%((%d+)%)"))
-                        x =
-                            string.format(
-                            "%s\n%s",
-                            x,
-                            string.format("%s = %s;", z.VariableNames[1], string.format("c_%d", C))
-                        )
+                        local G = tonumber(string.match(C.InstrInfo, "%((%d+)%)"))
+                        x[C.VariableNames[1]] = string.format("c_%d", G)
                     end,
                     SETTABLE = function()
-                        x =
+                        z =
                             string.format(
                             "%s\n%s",
-                            x,
-                            string.gsub(string.format("%s;", z.InstrInfo), "Environment", "_G")
+                            z,
+                            string.gsub(string.format("%s;", C.InstrInfo), "Environment", "_G")
                         )
                     end,
                     SETGLOBAL = function()
-                        x =
+                        local F = string.sub(string.match(string.sub(C.InstrInfo, 14, 9e9), "(.+)] ="), 1, -2)
+                        if string.find(x[string.match(string.gsub(C.InstrInfo, "Environment", "_G"), " = (.+)")], "c_") then
+                            q[x[string.match(string.gsub(C.InstrInfo, "Environment", "_G"), " = (.+)")]] = F
+                        end
+                        for H, I in pairs(q) do
+                            if I == F then
+                                return
+                            end
+                        end
+                        z =
                             string.format(
                             "%s\n%s",
-                            x,
-                            string.gsub(string.format("%s;", z.InstrInfo), "Environment", "_G")
+                            z,
+                            string.gsub(string.format("%s;", C.InstrInfo), "Environment", "_G")
                         )
-                        v[z.VariableNames[1]] = string.match(string.gsub(z.InstrInfo, "Environment", "_G"), " = (.+)")
+                        x[C.VariableNames[1]] = string.match(string.gsub(C.InstrInfo, "Environment", "_G"), " = (.+)")
                     end,
                     RETURN = function()
-                        if #z.VariableNames == 0 then
+                        if #C.VariableNames == 0 then
                             return
                         end
-                        x = string.format("%s\n%s", x, tostring(z.InstrInfo))
+                        z = string.format("%s\n%s", z, tostring(C.InstrInfo))
                     end,
                     CALL = function()
-                        local D = ""
+                        local J = ""
                         if
-                            string.find(z.InstrInfo, "to") and #z.VariableNames == 4 and
-                                not string.find(z.InstrInfo, "STACK_TOP")
+                            string.find(C.InstrInfo, "to") and #C.VariableNames == 4 and
+                                not string.find(C.InstrInfo, "STACK_TOP")
                          then
-                            D =
-                                string.format(
-                                "%s = %s(%s, %s)",
-                                z.VariableNames[1],
-                                z.VariableNames[3],
-                                z.VariableNames[2],
-                                z.VariableNames[4]
-                            )
+                            if x[C.VariableNames[1]] == nil then
+                                J =
+                                    string.format(
+                                    "local %s = %s(%s, %s)",
+                                    C.VariableNames[1],
+                                    C.VariableNames[3],
+                                    C.VariableNames[2],
+                                    C.VariableNames[4]
+                                )
+                            else
+                                J =
+                                    string.format(
+                                    "%s = %s(%s, %s)",
+                                    C.VariableNames[1],
+                                    C.VariableNames[2],
+                                    C.VariableNames[3],
+                                    C.VariableNames[4]
+                                )
+                            end
                         elseif
-                            string.find(z.InstrInfo, "to") and #z.VariableNames == 3 and
-                                not string.find(z.InstrInfo, "STACK_TOP")
+                            string.find(C.InstrInfo, "to") and #C.VariableNames == 3 and
+                                not string.find(C.InstrInfo, "STACK_TOP")
                          then
-                            D = string.format("%s(%s, %s)", z.VariableNames[1], z.VariableNames[2], z.VariableNames[3])
-                        elseif string.find(z.InstrInfo, "to STACK_TOP") then
-                            D = string.format("%s;", string.gsub(z.InstrInfo, "to STACK_TOP", ""))
+                            J = string.format("%s(%s, %s)", C.VariableNames[1], C.VariableNames[2], C.VariableNames[3])
+                        elseif string.find(C.InstrInfo, "to STACK_TOP") then
+                            J = string.format("%s;", string.gsub(C.InstrInfo, "to STACK_TOP", ""))
                         else
-                            D = z.InstrInfo
+                            J = C.InstrInfo
                         end
-                        if string.find(D, "to") then
-                            D = "-- FAILED TO PARSE LUA_CALL"
+                        if string.find(J, "to") then
+                            J = "-- FAILED TO PARSE LUA_CALL"
                         end
-                        x = string.format("%s\n%s", x, D)
+                        z = string.format("%s\n%s", z, J)
                     end,
                     NEWTABLE = function()
-                        x = string.format("%s\n%s", x, string.format("%s = {};", z.VariableNames[1]))
+                        z = string.format("%s\n%s", z, string.format("%s = {};", C.VariableNames[1]))
                     end,
                     MOVE = function()
-                        x =
-                            string.format(
-                            "%s\n%s",
-                            x,
-                            string.format("%s = %s;", z.VariableNames[1] or "R[nil]", z.VariableNames[2] or "R[nil]")
-                        )
-                    end,
-                    SETLIST = function()
-                        local E = y
-                        local F = E - 1
-                        local G = nil
-                        for r = 1, E do
-                            local H = E - (r - 1)
-                            local I = StripInformation(string_split(a, "\n")[H]).Instruction
-                            if I ~= "SETLIST" and I ~= "LOADK" then
-                                G = r - 2
+                        if #C.VariableNames > 1 then
+                            if x[C.VariableNames[1]] == nil then
+                                z =
+                                    string.format(
+                                    "%s\n%s",
+                                    z,
+                                    string.format("local %s = %s;", C.VariableNames[1], C.VariableNames[2])
+                                )
+                            else
+                                z =
+                                    string.format(
+                                    "%s\n%s",
+                                    z,
+                                    string.format("%s = %s;", C.VariableNames[1], C.VariableNames[2])
+                                )
                             end
                         end
-                        local J = 0
-                        local K = "0"
-                        for r = G, F do
-                            J = J + 1
-                            local I = StripInformation(string_split(a, "\n")[r])
-                            local L = string.match(I.InstrInfo, "= (.+)")
-                            local M = I.VariableNames[1]
-                            if J == 1 then
-                                local N = StripInformation(string_split(a, "\n")[r - 1])
-                                K = tostring(N.VariableNames[1])
+                    end,
+                    TAILCALL = function()
+                        local K = nil
+                        for t, E in pairs(x) do
+                            K = E
+                        end
+                        A = true
+                        if K ~= nil then
+                            z = string.format("%s\n%s", z, string.format("return %s(%s)", C.VariableNames[1], K))
+                        else
+                            z = string.format("%s\n%s", z, string.format("return %s()", C.VariableNames[1]))
+                        end
+                    end,
+                    SETLIST = function()
+                        local L = B
+                        local M = L - 1
+                        local N = nil
+                        for t = 1, L do
+                            local O = L - (t - 1)
+                            local P = StripInformation(string_split(b, "\n")[O]).Instruction
+                            if P ~= "SETLIST" and P ~= "LOADK" then
+                                N = t - 2
                             end
-                            x = string.format("%s\n%s", x, string.format("table.insert(%s, %s)", K, M))
+                        end
+                        local Q = 0
+                        local R = "0"
+                        for t = N, M do
+                            Q = Q + 1
+                            local P = StripInformation(string_split(b, "\n")[t])
+                            local S = string.match(P.InstrInfo, "= (.+)")
+                            local T = P.VariableNames[1]
+                            if Q == 1 then
+                                local U = StripInformation(string_split(b, "\n")[t - 1])
+                                R = tostring(U.VariableNames[1])
+                            end
+                            z = string.format("%s\n%s", z, string.format("table.insert(%s, %s)", R, T))
                         end
                     end,
                     GETUPVAL = function()
-                        x = string.format("%s\n%s", x, string.format("%s;", z.InstrInfo))
+                        if C.InstrInfo ~= nil then
+                            z =
+                                string.format(
+                                "%s\n%s",
+                                z,
+                                string.format(
+                                    "%s = u%d",
+                                    C.VariableNames[1],
+                                    string.match(C.InstrInfo, "Upvalues%[(%d+)]")
+                                ) or "-- INVALID UPVALUE"
+                            )
+                        end
                     end,
                     TEST = function()
-                        local O = string.match(z.InstrInfo, "%) (.+)")
-                        local P = {}
-                        for r = 1, 9e9 do
-                            local I = StripInformation(string_split(a, "\n")[y + r])
-                            if I.Instruction ~= "JMP" then
+                        local V = string.match(C.InstrInfo, "%) (.+)")
+                        local W = {}
+                        for t = 1, 9e9 do
+                            local P = StripInformation(string_split(b, "\n")[B + t])
+                            if P.Instruction ~= "JMP" then
                                 break
                             else
-                                table.insert(P, I.InstrInfo)
+                                table.insert(W, P.InstrInfo)
                             end
                         end
-                        if #P > 1 then
-                            local Q = string.match(P[1], "%((%d+)%)")
-                            local R = string.match(P[2], "%((%d+)%)")
-                            w[Q] = true
-                            w[R] = true
+                        if #W > 1 then
+                            local X = string.match(W[1], "%((%d+)%)")
+                            local Y = string.match(W[2], "%((%d+)%)")
+                            y[X] = true
+                            y[Y] = true
                         else
-                            x = string.format("%s\n%s", x, "-- UNSUPPORTED IF STATEMENT")
+                            z = string.format("%s\n%s", z, "-- UNSUPPORTED IF STATEMENT")
                             return
                         end
-                        x =
+                        z =
                             string.format(
                             "%s\n%s",
-                            x,
-                            string.gsub(string.gsub(string.gsub(O, "is not", "~="), "or false", ""), "is nil", "== nil") ..
+                            z,
+                            string.gsub(string.gsub(string.gsub(V, "is not", "~="), "or false", ""), "is nil", "== nil") ..
                                 " then"
                         )
                     end,
                     EQ = function()
-                        local O = string.match(z.InstrInfo, "%) (.+)")
-                        local P = {}
-                        for r = 1, 9e9 do
-                            local I = StripInformation(string_split(a, "\n")[y + r])
-                            if I.Instruction ~= "JMP" then
+                        local V = string.match(C.InstrInfo, "%) (.+)")
+                        local W = {}
+                        for t = 1, 9e9 do
+                            local P = StripInformation(string_split(b, "\n")[B + t])
+                            if P.Instruction ~= "JMP" then
                                 break
                             else
-                                table.insert(P, I.InstrInfo)
+                                table.insert(W, P.InstrInfo)
                             end
                         end
-                        if #P > 0 then
-                            local Q = string.match(P[1], "%((%d+)%)")
-                            w[Q] = true
+                        if #W > 0 then
+                            local X = string.match(W[1], "%((%d+)%)")
+                            y[X] = true
                         else
-                            x = string.format("%s\n%s", x, "-- UNSUPPORTED IF STATEMENT")
+                            z = string.format("%s\n%s", z, "-- UNSUPPORTED IF STATEMENT")
                             return
                         end
-                        x =
+                        z =
                             string.format(
                             "%s\n%s",
-                            x,
-                            string.gsub(string.gsub(string.gsub(O, "is not", "~="), "or false", ""), "is nil", "== nil") ..
+                            z,
+                            string.gsub(string.gsub(string.gsub(V, "is not", "~="), "or false", ""), "is nil", "== nil") ..
                                 " then"
                         )
                     end,
                     SELF = function()
-                        if string.find(z.InstrInfo, ",") then
-                            local S = string_split(z.InstrInfo, ",")
-                            for r = 1, #S do
-                                x = string.format("%s\n%s", x, S[r])
+                        if string.find(C.InstrInfo, ",") then
+                            local Z = string_split(C.InstrInfo, ",")
+                            for t = 1, #Z do
+                                z = string.format("%s\n%s", z, Z[t])
                             end
                         else
-                            x =
+                            z =
                                 string.format(
                                 "%s\n%s",
-                                x,
+                                z,
                                 string.format(
                                     "%s = %s.%s",
-                                    z.VariableNames[1],
-                                    z.VariableNames[2],
-                                    string.match(z.InstrInfo, '"(.+)"')
+                                    C.VariableNames[1],
+                                    C.VariableNames[2],
+                                    string.match(C.InstrInfo, '"(.+)"')
                                 )
                             )
                         end
                     end,
                     GETTABLE = function()
-                        x = string.format("%s\n%s", x, z.InstrInfo)
+                        z = string.format("%s\n%s", z, C.InstrInfo)
                     end
                 },
                 function()
-                    if string.len(z.Instruction) > 5 then
-                        x = string.format("%s\n%s", x, string.format("-- Failed to parse LUA_%s", z.Instruction))
+                    if string.len(C.Instruction) > 5 then
+                        z = string.format("%s\n%s", z, string.format("-- Failed to parse LUA_%s", C.Instruction))
                     end
                 end
             )
-            local A = 0
-            for r, B in pairs(w) do
-                A = A + 1
-                if "00" .. r == z.MemoryAt then
-                    print("else ->", z.MemoryAt)
-                    x = string.format("%s\n%s", x, "end")
-                    table.remove(w, r)
+            local D = 0
+            for t, E in pairs(y) do
+                D = D + 1
+                if "00" .. t == C.MemoryAt then
+                    print("else ->", C.MemoryAt)
+                    z = string.format("%s\n%s", z, "end")
+                    table.remove(y, t)
                 end
             end
         end
     end
-    return LdToDec(x)
+    return LdToDec(z)
 end
-local x = ""
-for y, m in pairs(string_split(a, "\n")) do
-    if string.find(m, "Prototype %(ID:") then
-        local C = tonumber(string.match(m, "%(ID: (%d+)%)"))
-        o[C] = m
-        print("Deobfuscating function: 0x" .. tostring(C))
-        local t = tonumber(string.match(string_split(a, "\n")[y + 2], ": (%d+)"))
-        local T = tonumber(string.match(string_split(a, "\n")[y + 1], ": (%d+)"))
-        local U = select(1, Prototype2Script(y, t + T + 3))
-        local V = tonumber(string.match(string.match(m, "%d Parameter"), "%d"))
-        local W = tonumber(string.match(string.match(m, "%d Upvalues"), "%d"))
-        x =
-            string.format(
-            "%s\n%s",
-            x,
-            string.format("-- %d parameters\n-- %d upvalues\n-- %d constants\n-- %d instructions", V, W, T, t)
-        )
-        x = string.format("%s\n%s", x, string.format("function c_%d(%s)", C, GenerateParameters(V)))
-        for X, Y in pairs(string_split(U, "\n")) do
-            x = string.format("%s\n\t%s", x, Y)
+local z = ""
+local _ = ""
+local a0 = 0
+print("--[[\n\tDeobfuscated using Kiko's Deobfuscator©")
+for B, n in pairs(string_split(b, "\n")) do
+    if string.find(n, "Prototype %(ID:") then
+        a0 = a0 + 1
+        local G = tonumber(string.match(n, "%(ID: (%d+)%)"))
+        p[G] = n
+        print("\tGenerating function: 0xfffffff" .. tostring(G))
+        local v = tonumber(string.match(string_split(b, "\n")[B + 2], ": (%d+)"))
+        local a1 = tonumber(string.match(string_split(b, "\n")[B + 1], ": (%d+)"))
+        local a2 = select(1, Prototype2Script(B, v + a1 + 3))
+        local a3 = tonumber(string.match(string.match(n, "%d Parameter"), "%d"))
+        local a4 = tonumber(string.match(string.match(n, "%d Upvalues"), "%d"))
+        if a0 == 1 then
+            _ = string.format("%s%s", _, a2)
+        else
+            z =
+                string.format(
+                "%s\n%s",
+                z,
+                a and
+                    string.format(
+                        "-- %d parameters\n-- %d upvalues\n-- %d constants\n-- %d instructions",
+                        a3,
+                        a4,
+                        a1,
+                        v
+                    ) or
+                    ""
+            )
+            z = string.format("%s\n%s", z, string.format("local function c_%d(%s)", G, GenerateParameters(a3)))
+            for a5, a6 in pairs(string_split(a2, "\n")) do
+                z = string.format("%s\n\t%s", z, a6)
+            end
+            z = string.format("%s\n%s", z, "end")
         end
-        x = string.format("%s\n%s", x, "end")
     end
 end
-local Z = math.huge
-for _ in pairs(o) do
-    Z = math.min(_, Z)
+print("]]--")
+local a7 = math.huge
+for a8 in pairs(p) do
+    a7 = math.min(a8, a7)
 end
-x = string.format("%s\n%s", x, string.format("c_%d()", Z))
-x = LdToDec(x)
-print(x)
+z = LdToDec(z)
+z = string.format("%s\n%s", z, _)
+for t, E in pairs(q) do
+    z = z:gsub(t, E)
+end
+print(z)
