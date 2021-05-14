@@ -1,0 +1,60 @@
+Prototype (ID: 44541002) - 0 Parameter(s), 0 Upvalues, ...
+
+> #Prototype.Constants: 4
+> #Prototype.Instructions: 11
+> #Prototype.Prototypes: 3
+
+> [Constants->0] (String) "function1"
+> [Constants->1] (String) "function2"
+> [Constants->2] (String) "function3"
+> [Constants->3] (String) "print"
+
+> [Instructions->00, 01, 0032020268]   CLOSURE: { 0 , 0 , 0 } / R[0] = Prototypes[0] (30442998), 0 upvalue(s)
+> [Instructions->01, 08, 0019701578] SETGLOBAL: { 0 , 1 , 0 } / Environment["function1"] = R[0]
+> [Instructions->02, 01, 0064627341]   CLOSURE: { 0 , 1 , 0 } / R[0] = Prototypes[1] (30532579), 0 upvalue(s)
+> [Instructions->03, 08, 0035557423] SETGLOBAL: { 0 , 2 , 0 } / Environment["function2"] = R[0]
+> [Instructions->04, 01, 0052539671]   CLOSURE: { 0 , 2 , 0 } / R[0] = Prototypes[2] (38498557), 0 upvalue(s)
+> [Instructions->05, 17, 0036249349] SETGLOBAL: { 0 , 3 , 0 } / Environment["function3"] = R[0]
+> [Instructions->06, 17, 0040792853] GETGLOBAL: { 0 , 4 , 0 } / R[0] = Environment["print"]
+> [Instructions->07, 17, 0039686607] GETGLOBAL: { 1 , 3 , 0 } / R[1] = Environment["function3"]
+> [Instructions->08, 17, 0045207704]      CALL: { 1 , 1 , 0 } / R[1] to STACK_TOP = R[1]()
+> [Instructions->09, 17, 0015808916]      CALL: { 0 , 0 , 1 } / R[0](R[1] to STACK_TOP)
+> [Instructions->10, 17, 0046714790]    RETURN: { 0 , 1 , 0 } / return 
+
+Prototype (ID: 30442998) - 0 Parameter(s), 0 Upvalues
+
+> #Prototype.Constants: 1
+> #Prototype.Instructions: 3
+> #Prototype.Prototypes: 0
+
+> [Constants->0] (String) "Hello World"
+
+> [Instructions->0, 14, 0014127732]  LOADK: { 0 , 1 , 0 } / R[0] = "Hello World"
+> [Instructions->1, 09, 0017580640] RETURN: { 0 , 2 , 0 } / return R[0]
+> [Instructions->2, 19, 0024765583] RETURN: { 0 , 1 , 0 } / return 
+
+Prototype (ID: 30532579) - 0 Parameter(s), 0 Upvalues
+
+> #Prototype.Constants: 1
+> #Prototype.Instructions: 4
+> #Prototype.Prototypes: 0
+
+> [Constants->0] (String) "function1"
+
+> [Instructions->0, 11, 0021432036] GETGLOBAL: { 0 , 1 , 0 } / R[0] = Environment["function1"]
+> [Instructions->1, 02, 0035374084]  TAILCALL: { 0 , 1 , 0 } / return R[0]()
+> [Instructions->2, 16, 0020088659]    RETURN: { 0 , 0 , 0 } / return R[0] to STACK_TOP
+> [Instructions->3, 19, 0066031861]    RETURN: { 0 , 1 , 0 } / return 
+
+Prototype (ID: 38498557) - 0 Parameter(s), 0 Upvalues
+
+> #Prototype.Constants: 1
+> #Prototype.Instructions: 4
+> #Prototype.Prototypes: 0
+
+> [Constants->0] (String) "fuction2"
+
+> [Instructions->0, 11, 0010697166] GETGLOBAL: { 0 , 1 , 0 } / R[0] = Environment["fuction2"]
+> [Instructions->1, 02, 0014350209]  TAILCALL: { 0 , 1 , 0 } / return R[0]()
+> [Instructions->2, 16, 0056959091]    RETURN: { 0 , 0 , 0 } / return R[0] to STACK_TOP
+> [Instructions->3, 19, 0015429576]    RETURN: { 0 , 1 , 0 } / return 
