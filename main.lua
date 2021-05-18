@@ -132,9 +132,9 @@ Prototype2Script = function(Idx, InstructionAmount)
                         end
                     end,
                     CLOSURE = function()
-                        local ClosureID = tonumber(string.match(Info.InstrInfo, "%((%d+)%)"))
+                        --local ClosureID = tonumber(string.match(Info.InstrInfo, "%((%d+)%)"))
 
-                        LoadedVars[Info.VariableNames[1]] = string.format("c_%d", ClosureID)
+                        --LoadedVars[Info.VariableNames[1]] = string.format("c_%d", ClosureID)
 
                         --table.foreach(LoadedVars, print)
                     end,
@@ -315,8 +315,35 @@ Prototype2Script = function(Idx, InstructionAmount)
                             )
                         end
                     end,
+                    SETUPVAL = function()
+                        if Info.InstrInfo ~= nil then
+                            script =
+                                string.format(
+                                "%s\n%s",
+                                script,
+                                string.format(
+                                    "u%d = %s",
+                                    string.match(Info.InstrInfo, "Upvalues%[(%d+)]"),
+                                    Info.VariableNames[1]
+                                ) or "-- INVALID UPVALUE"
+                            )
+                        end
+                    end,
+                    LOADNIL = function()
+                        if Info.InstrInfo ~= nil then
+                            script =
+                                string.format(
+                                "%s\n%s",
+                                script,
+                                string.format(
+                                    "%s = nil -- LOADNIL",
+                                    Info.VariableNames[1]
+                                )
+                            )
+                        end
+                    end,
                     TEST = function()
-                        local FStatement = string.match(Info.InstrInfo, "%) (.+)")
+                        --[[local FStatement = string.match(Info.InstrInfo, "%) (.+)")
 
                         local jmps = {}
                         for I = 1, 9e9 do
@@ -349,11 +376,11 @@ Prototype2Script = function(Idx, InstructionAmount)
                                 "is nil",
                                 "== nil"
                             ) .. " then"
-                        )
+                        )]]
                     end,
                     EQ = function()
-                        local FStatement = string.match(Info.InstrInfo, "%) (.+)")
-
+                        local FStatement = Info.InstrInfo --string.match(Info.InstrInfo, "%) (.+)")
+                        --EQ: {  0 ,    8 ,   9 } / if R[8] == R[9] then PC++
                         local jmps = {}
                         for I = 1, 9e9 do
                             local Inst = StripInformation(string_split(Instructions, "\n")[Index + I])
@@ -368,7 +395,9 @@ Prototype2Script = function(Idx, InstructionAmount)
                             --IStatementsB[MemAtElse] = true
                             local MemAtIf = string.match(jmps[1], "%((%d+)%)")
                             --local MemAtElse = string.match(jmps[2], "%((%d+)%)")
-                            IStatementsB[MemAtIf] = true
+                            if rawget(IStatementsB, MemAtIf) then
+                                IStatementsB[MemAtIf] = true
+                            end 
                         else -- no other statements
                             script = string.format("%s\n%s", script, "-- UNSUPPORTED IF STATEMENT")
                             return
@@ -388,7 +417,7 @@ Prototype2Script = function(Idx, InstructionAmount)
                         )
                     end,
                     SELF = function()
-                        if string.find(Info.InstrInfo, ",") then
+                        --[[if string.find(Info.InstrInfo, ",") then
                             local Both = string_split(Info.InstrInfo, ",")
                             for I = 1, #Both do
                                 script = string.format("%s\n%s", script, Both[I])
@@ -405,7 +434,7 @@ Prototype2Script = function(Idx, InstructionAmount)
                                     string.match(Info.InstrInfo, '"(.+)"')
                                 )
                             )
-                        end
+                        end]]
                     end,
                     GETTABLE = function()
                         script = string.format("%s\n%s", script, Info.InstrInfo)
@@ -444,7 +473,7 @@ local main_code = ""
 local CLIdx = 0
 print("--[[\n\tDeobfuscated using Kiko's Deobfuscator©")
 for Index, Line in pairs(string_split(Instructions, "\n")) do
-    if string.find(Line, "Prototype %(ID:") then
+    if string.find(Line, "%.function %(ID:") then
         CLIdx = CLIdx + 1
         local ClosureID = tonumber(string.match(Line, "%(ID: (%d+)%)"))
         Prototypes[ClosureID] = Line
@@ -492,7 +521,7 @@ for k in pairs(Prototypes) do
 end
 
 --script = string.format("%s\n%s", script, string.format("c_%d()", CKey))
---script = string.gsub(script, "c_" .. CKey, "main")
+script = string.gsub(script, "PC++ then", "")
 script = LdToDec(script)
 script = string.format("%s\n%s", script, main_code)
 for I, V in pairs(ClosureNames) do
