@@ -506,26 +506,19 @@ Prototype2Script = function(Idx, InstructionAmount)
                                 ) .. ""
                             )
                         end,
-                        --[[SELF = function()
-                            if string.find(Info.InstrInfo, ",") then
-                                local Both = string_split(Info.InstrInfo, ",")
-                                for I = 1, #Both do
-                                    script = string.format("%s\n%s", script, Both[I])
-                                end
-                            else
-                                script =
-                                    string.format(
-                                    "%s\n%s",
-                                    script,
-                                    string.format(
-                                        "%s = %s.%s",
-                                        Info.VariableNames[1],
-                                        Info.VariableNames[2],
-                                        string.match(Info.InstrInfo, '"(.+)"')
-                                    )
+                        SELF = function()
+                            script =
+                                string.format(
+                                "%s\n%s",
+                                script,
+                                string.format(
+                                    "%s = %s.%s",
+                                    string.format("R[%d]", Info.AItems[1]),
+                                    Info.VariableNames[1],
+                                    string.match(Info.InstrInfo, '"(.+)"')
                                 )
-                            end
-                        end,]]
+                            )
+                        end,
                         GETTABLE = function()
                             script = string.format("%s\n%s", script, Info.InstrInfo)
                         end
